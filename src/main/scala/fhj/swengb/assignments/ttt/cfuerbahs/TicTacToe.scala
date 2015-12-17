@@ -59,11 +59,37 @@ case object PlayerB extends Player
 
 object TicTacToe {
 
+
+  //furchr
+
+  def main(args: Array[String]) {
+
+    val t = TicTacToe().turn(BottomRight, PlayerA).turn(BottomCenter,PlayerB).turn(BottomLeft, PlayerA).turn(MiddleCenter,PlayerA).turn(MiddleRight,PlayerB)
+      .turn(MiddleLeft,PlayerB).turn(TopCenter,PlayerA).turn(TopRight,PlayerB).turn(TopLeft,PlayerB)
+
+    //test output
+    print(t.asString())
+    println("RemainingMoves: " + t.remainingMoves)
+    println("Number of remaining moves: " + t.remainingMoves.size)
+
+    //test remainingmoves
+    println("Is the game over? " + t.gameOver)
+    println("Winner is: " + t.winner.getOrElse(None))
+
+  }
+
+  //furchr
+
+
+
+
+
   /**
     * creates an empty tic tac toe game
     * @return
     */
-  def apply(): TicTacToe = ???
+  def apply(): TicTacToe = TicTacToe(Map())//furchr
+
 
   /**
     * For a given tic tac toe game, this function applies all moves to the game.
@@ -80,6 +106,11 @@ object TicTacToe {
     * @return
     */
   def mkGames(): Map[Seq[TMove], TicTacToe] = ???
+
+  //furchr
+  val allGames : Map[Seq[TMove], TicTacToe] = Map()
+  //return allGames
+  //furchr
 
 }
 
@@ -107,19 +138,93 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     *
     * @return
     */
-  def asString(): String = ???
+  def asString(): String =
+  //furchr
+  {
+
+    val indexMap = Map(0 -> 16, 1 -> 20, 2 -> 24,
+      3 -> 44, 4 -> 48, 5 -> 52,
+      6 -> 72, 7 -> 76, 8 -> 80)
+
+    var board: String =
+      "|---|---|---|\n" +
+        "|   |   |   |\n" +
+        "|---|---|---|\n" +
+        "|   |   |   |\n" +
+        "|---|---|---|\n" +
+        "|   |   |   |\n" +
+        "|---|---|---|\n"
+
+
+    for ((k, v) <- moveHistory) {
+      if (v == PlayerA) {
+        board = board.updated(indexMap(k.idx), "O").mkString
+      }
+      else if (v == PlayerB) {
+        board = board.updated(indexMap(k.idx), "X").mkString
+      }
+      else {
+        board = board.updated(indexMap(k.idx), " ").mkString
+      }
+    }
+    board
+  }
 
   /**
     * is true if the game is over.
     *
     * The game is over if either of a player wins or there is a draw.
     */
-  val gameOver : Boolean = ???
+  val winningScenarios: List[Set[TMove]] = List(Set(TopLeft, TopCenter, TopRight), Set(MiddleLeft, MiddleCenter, MiddleRight), Set(BottomLeft, BottomCenter, BottomRight),
+    Set(TopLeft, MiddleCenter, BottomRight), Set(TopRight, MiddleCenter, BottomLeft), Set(TopCenter, MiddleCenter, BottomCenter), Set(TopLeft, MiddleLeft, BottomLeft),
+    Set(TopRight, MiddleRight, BottomRight))
+
+  def checkIfWon(player: Player): Boolean = {
+
+    if(winningScenarios.head.subsetOf(moveHistory.filter(_._2 == player).keySet))
+      true
+    else if(winningScenarios(1).subsetOf(moveHistory.filter(_._2 == player).keySet))
+      true
+    else if(winningScenarios(2).subsetOf(moveHistory.filter(_._2 == player).keySet))
+      true
+    else if(winningScenarios(3).subsetOf(moveHistory.filter(_._2 == player).keySet))
+      true
+    else if(winningScenarios(4).subsetOf(moveHistory.filter(_._2 == player).keySet))
+      true
+    else if(winningScenarios(5).subsetOf(moveHistory.filter(_._2 == player).keySet))
+      true
+    else if(winningScenarios(6).subsetOf(moveHistory.filter(_._2 == player).keySet))
+      true
+    else if(winningScenarios(7).subsetOf(moveHistory.filter(_._2 == player).keySet))
+      true
+    else
+      false
+  }
+
 
   /**
     * the moves which are still to be played on this tic tac toe.
     */
-  val remainingMoves: Set[TMove] = ???
+  val tMoves: Set[TMove] = Set(TopLeft, TopCenter, TopRight, MiddleLeft, MiddleCenter, MiddleRight, BottomLeft, BottomCenter, BottomRight)
+  val fieldsNotSet = moveHistory.filter(x => x._2 != PlayerA || x._2 != PlayerB).keySet
+
+  //furchr
+
+  /**
+    * is true if the game is over.
+    *
+    * The game is over if either of a player wins or there is a draw.
+    */
+  val gameOver : Boolean = true match {//furchr
+    case gameEnd => winner.isDefined || remainingMoves.isEmpty
+    case _ => false
+  }
+  //furchr
+
+  /**
+    * the moves which are still to be played on this tic tac toe.
+    */
+  val remainingMoves: Set[TMove] = tMoves.diff(fieldsNotSet)
 
   /**
     * given a tic tac toe game, this function returns all
@@ -133,7 +238,15 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     *
     * The set of moves contains all moves which contributed to the result.
     */
-  def winner: Option[(Player, Set[TMove])] = ???
+  def winner: Option[(Player, Set[TMove])] = {
+    //furchr
+    if(checkIfWon(PlayerA))
+      Some(PlayerA,moveHistory.filter(_._2 == PlayerA).keySet)
+    else if(checkIfWon(PlayerB))
+      Some(PlayerB,moveHistory.filter(_._2 == PlayerB).keySet)
+    else None
+    //furchr
+  }
 
   /**
     * returns a copy of the current game, but with the move applied to the tic tac toe game.
@@ -142,7 +255,20 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * @param player the player
     * @return
     */
-  def turn(p: TMove, player: Player): TicTacToe = ???
+  def turn(p: TMove, player: Player): TicTacToe = {//furchr
+
+    if (!moveHistory.get(p).contains(PlayerA) || !moveHistory.get(p).contains(PlayerB)) {
+      if (player.equals(PlayerA))
+        TicTacToe(this.moveHistory + (p -> player), PlayerB)
+      else
+        TicTacToe(this.moveHistory + (p -> player), PlayerA)
+
+    }
+    else{
+      TicTacToe(this.moveHistory, nextPlayer)
+    }
+    //furchr
+  }
 
 }
 
