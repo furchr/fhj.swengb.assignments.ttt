@@ -4,26 +4,37 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fhj.swengb.assignments.ttt.cfuerbahs.TicTacToeController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+          prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="fhj.swengb.assignments.ttt.cfuerbahs.TicTacToeController">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
     </rowConstraints>
     <children>
-        <Button id="btnTopLeft" fx:id="btnTopLeft" mnemonicParsing="false" onAction="#execMove" prefHeight="182.0" prefWidth="252.0" />
-        <Button id="btnTopCenter" fx:id="btnTopCenter" mnemonicParsing="false" onAction="#execMove" prefHeight="190.0" prefWidth="318.0" GridPane.columnIndex="1" />
-        <Button id="btnMiddleLeft" fx:id="btnMiddleLeft" mnemonicParsing="false" onAction="#execMove" prefHeight="254.0" prefWidth="281.0" GridPane.rowIndex="1" />
-        <Button id="btnBottomLeft" fx:id="btnBottomLeft" mnemonicParsing="false" onAction="#execMove" prefHeight="245.0" prefWidth="354.0" GridPane.rowIndex="2" />
-        <Button id="btnMiddleCenter" fx:id="btnMiddleCenter" mnemonicParsing="false" onAction="#execMove" prefHeight="205.0" prefWidth="327.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <Button id="btnBottomCenter" fx:id="btnBottomCenter" mnemonicParsing="false" onAction="#execMove" prefHeight="217.0" prefWidth="308.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <Button id="btnTopRight" fx:id="btnTopRight" mnemonicParsing="false" onAction="#execMove" prefHeight="254.0" prefWidth="250.0" GridPane.columnIndex="2" />
-        <Button id="btnMiddleRight" fx:id="btnMiddleRight" mnemonicParsing="false" onAction="#execMove" prefHeight="170.0" prefWidth="276.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-        <Button id="btnBottomRight" fx:id="btnBottomRight" mnemonicParsing="false" onAction="#execMove" prefHeight="166.0" prefWidth="252.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <Button id="btnTopLeft" fx:id="btnTopLeft" mnemonicParsing="false" onAction="#execMove" prefHeight="182.0"
+                prefWidth="252.0"/>
+        <Button id="btnTopCenter" fx:id="btnTopCenter" mnemonicParsing="false" onAction="#execMove" prefHeight="190.0"
+                prefWidth="318.0" GridPane.columnIndex="1"/>
+        <Button id="btnMiddleLeft" fx:id="btnMiddleLeft" mnemonicParsing="false" onAction="#execMove" prefHeight="254.0"
+                prefWidth="281.0" GridPane.rowIndex="1"/>
+        <Button id="btnBottomLeft" fx:id="btnBottomLeft" mnemonicParsing="false" onAction="#execMove" prefHeight="245.0"
+                prefWidth="354.0" GridPane.rowIndex="2"/>
+        <Button id="btnMiddleCenter" fx:id="btnMiddleCenter" mnemonicParsing="false" onAction="#execMove"
+                prefHeight="205.0" prefWidth="327.0" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Button id="btnBottomCenter" fx:id="btnBottomCenter" mnemonicParsing="false" onAction="#execMove"
+                prefHeight="217.0" prefWidth="308.0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <Button id="btnTopRight" fx:id="btnTopRight" mnemonicParsing="false" onAction="#execMove" prefHeight="254.0"
+                prefWidth="250.0" GridPane.columnIndex="2"/>
+        <Button id="btnMiddleRight" fx:id="btnMiddleRight" mnemonicParsing="false" onAction="#execMove"
+                prefHeight="170.0" prefWidth="276.0" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+        <Button id="btnBottomRight" fx:id="btnBottomRight" mnemonicParsing="false" onAction="#execMove"
+                prefHeight="166.0" prefWidth="252.0" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
     </children>
 </GridPane>
