@@ -41,7 +41,7 @@ class TicTacToeApp extends javafx.application.Application {
 }
 
 
-class TicTakToeController extends Initializable {
+class TicTacToeController extends Initializable {
   @FXML var borderPane: BorderPane = _
 
   override def initialize(location: URL, resources: ResourceBundle): Unit = {
